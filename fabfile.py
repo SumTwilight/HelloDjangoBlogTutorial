@@ -1,3 +1,4 @@
+# pipenv run fab -H zl@120.26.178.160:22 --prompt-for-login-password -p deploy
 from fabric import task
 from invoke import Responder
 from _credentials import github_username, github_password

@@ -1,0 +1,12 @@
+# mypy
+*.sqlite3
+media/
+
+# pycharm .idea folder, see following link to know which files should be ignored:
+.idea/workspace.xml
+.idea/dataSources.*
+.idea/tasks.xml
+.idea/dictionaries/
+
+# github account
+_credentials.py

@@ -86,6 +86,9 @@ class Post(models.Model):
     # Category 类似。
     author = models.ForeignKey(User, verbose_name='作者', on_delete=models.CASCADE)
 
+    # 新增 views 字段记录阅读量
+    views = models.PositiveIntegerField(default=0, editable=False)
+
     class Meta:
         verbose_name = '文章'
         verbose_name_plural = verbose_name
@@ -116,4 +119,6 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'pk': self.pk})
 
-
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])

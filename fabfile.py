@@ -40,6 +40,7 @@ def deploy(c):
     # 安装依赖，迁移数据库，收集静态文件
     with c.cd(project_root_path):
         c.run('~/.local/bin/pipenv install --deploy --ignore-pipfile')
+        c.run('~/.local/bin/pipenv run python manage.py makemigrations')
         c.run('~/.local/bin/pipenv run python manage.py migrate')
         c.run('~/.local/bin/pipenv run python manage.py collectstatic --noinput')
 

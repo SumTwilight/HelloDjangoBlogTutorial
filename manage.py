@@ -2,7 +2,10 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+# python manage.py createsuperuser
+# python manage.py makemigrations
+# python manage.py migrate
+# python manage.py runserver
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blogproject.settings.local')

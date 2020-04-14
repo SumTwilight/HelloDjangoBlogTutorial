@@ -1,0 +1,89 @@
+## 第一周
+### Requests库网络爬取实战
+![测试图片](http://t8.baidu.com/it/u=3571592872,3353494284&fm=79&app=86&f=JPEG?w=1200&h=1290)
+- 实例一：京东商品页面爬取
+- 实例二：亚马逊商品页面的爬取
+```python
+  import requests
+  url = "https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch.gif"
+  try:
+      kv = {'user-agent': 'Mozilla/5.0'}
+      r = requests.get(url, headers=kv)
+      r.raise_for_status()
+      r.encoding = r.apparent_encoding
+      print(r.text[1000:2000])
+      with open("amazon.html", "w", encoding="utf-8") as f:
+         f.write(r.text)
+  except:
+      print("爬取失败")
+```
+- 实例三：百度/360搜索关键字提交
+```python
+  # 百度
+  import requests
+  url = "http://www.baidu.com/s"
+  try:
+      kw = {'wd': 'Python'}
+      kv = {'user-agent': 'Mozilla/5.0'}
+      r = requests.get(url, params=kw, headers=kv)
+      r.raise_for_status()
+      r.encoding = r.apparent_encoding
+      print(r.text[1000:2000])
+      with open("baidu1.html", "w", encoding="utf-8") as f:
+          f.write(r.text)
+  except:
+      print("爬取失败")
+```
+```python
+  # 360
+  import requests
+  url = "https://m.so.com/s"
+  try:
+      kw = {"q": "Python"}
+      kv = {"user-agent": "Mozilla/5.0"}
+      r = requests.get(url, params=kw, headers=kv)
+      r.raise_for_status()
+      r.encoding = r.apparent_encoding
+      print(r.text[:2000])
+      with open("360search.html", "w", encoding="utf-8") as f:
+          f.write(r.text)
+  except:
+      print("爬取失败")
+```
+- 实例四：网络图片的爬取和存储
+```python
+  import requests
+  import os
+  root = "./pic/"
+  url = "https://i0.hdslb.com/bfs/article/7d5ae1cba5b668982a28cf5db8e84ca94ab84ae8.jpg@1320w_1860h.webp"
+  path = root + "0{}.jpeg"  # url.split('/')[-1]
+
+  try:
+      if not os.path.exists(root):
+          os.mkdir(root)
+      if not os.path.exists(path):
+          r = requests.get(url)
+          print(r.status_code)
+
+          with open(path.format("b"), 'wb') as f:
+              f.write(r.content)
+              f.close()
+              print("文件保存成功")
+      else:
+          print("文件已存在")
+  except:
+      print("爬取失败")
+```
+- 实例五：IP地址归属地的自动查询
+```python
+  import requests
+  url = "http://m.ip138.com/ip.asp?ip="
+  ip = "202.204.80.112"   # 北理官网ip
+  try:
+      r = requests.get(url+ip)
+      r.raise_for_status()
+      r.encoding = r.apparent_encoding
+      print(r.text[-500:])
+  except:
+      print("爬取失败")
+```

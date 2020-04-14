@@ -1,11 +1,11 @@
 ## 第一周
 ### Requests库网络爬取实战
-![测试图片](http://t8.baidu.com/it/u=3571592872,3353494284&fm=79&app=86&f=JPEG?w=1200&h=1290)
+![测试图片](https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch.gif)
 - 实例一：京东商品页面爬取
 - 实例二：亚马逊商品页面的爬取
 ```python
   import requests
-  url = "https://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch.gif"
+  url = "https://www.amazon.com/dp/B01FJS2MXU/"
   try:
       kv = {'user-agent': 'Mozilla/5.0'}
       r = requests.get(url, headers=kv)

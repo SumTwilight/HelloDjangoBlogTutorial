@@ -1,3 +1,7 @@
+# pipenv run gunicorn blogproject.wsgi -w 2 -k gthread -b 0.0.0.0:8000
+# sudo systemctl start nginx
+# sudo systemctl restart nginx
+
 # pipenv run fab -H zl@120.26.178.160:22 --prompt-for-login-password -p deploy
 from fabric import task
 from invoke import Responder

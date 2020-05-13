@@ -68,20 +68,21 @@ class PostDetailView(DetailView):
     def get_object(self, queryset=None):
         # 覆写 get_object 方法的目的是因为需要对 post 的 body 值进行渲染
         post = super().get_object(queryset=None)
-        md = markdown.Markdown(extensions=[
-            'markdown.extensions.extra',
-            'markdown.extensions.codehilite',
-            # 记得在顶部引入 TocExtension 和 slugify
-            TocExtension(slugify=slugify),
-        ])
-        post.body = md.convert(post.body)
-
-        m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
-        post.toc = m.group(1) if m is not None else ''
-
+        # 这一部分功能写在了models.py中
+        # md = markdown.Markdown(extensions=[
+        #     'markdown.extensions.extra',
+        #     'markdown.extensions.codehilite',
+        #     # 记得在顶部引入 TocExtension 和 slugify
+        #     TocExtension(slugify=slugify),
+        # ])
+        # post.body = md.convert(post.body)
+        #
+        # m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
+        # post.toc = m.group(1) if m is not None else ''
+        # print(type(post))
         return post
 
-# 使用faction模式
+# 使用faction模式，旧的，现在没有使用
 def index(request):
     post_list = Post.objects.all().order_by('-created_time')
     return render(request, 'blog/index.html', context={'post_list': post_list})

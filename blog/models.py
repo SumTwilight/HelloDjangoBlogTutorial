@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
 
+from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
-from django.template.defaultfilters import slugify
 from django.utils.functional import cached_property
 
 import markdown

@@ -15,6 +15,10 @@ from .models import Category, Post, Tag
 from django.views.generic import ListView, DetailView
 from pure_pagination import PaginationMixin
 
+from django.contrib import messages
+from django.shortcuts import redirect
+from django.db.models import Q
+
 
 # 使用类视图模式
 class IndexView(PaginationMixin, ListView):
@@ -128,4 +132,14 @@ def tag(request, pk):
     post_list = Post.objects.filter(tags=t).order_by('-created_time')
     return render(request, 'blog/index.html', context={'post_list': post_list})
 
-# print("hello world")
+# 添加查找功能
+def search(request):
+    q = request.GET.get('q')
+
+    if not q:
+        error_msg = "请输入搜索关键词"
+        messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
+        return redirect('blog:index')
+
+    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
+    return render(request, 'blog/index.html', {'post_list': post_list})

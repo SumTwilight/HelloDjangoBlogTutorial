@@ -55,6 +55,12 @@
           padding-left: 10px;
           white-space: pre;
         }
+        #input{
+            width: 200px;
+            position: relative;
+            left: 700px;
+            top: 0px;
+        }
       </style>
   </head>
 
@@ -65,6 +71,7 @@
             <div class="logo">
                 <h1><a href="{% url 'blog:index' %}"><b>Black</b> &amp; White</a></h1>
             </div>
+
             <div class="col-md-8 col-sm-7 col-xs-4">
                 <nav class="main-nav" role="navigation">
                     <div class="navbar-header">
@@ -72,27 +79,24 @@
                             <span class="ion-navicon"></span>
                         </button>
                     </div>
-
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="首页">首页</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="博客">博客</a></li>
-                            <li class="cl-effect-11"><a href="about.html" data-hover="关于">关于</a></li>
-                            <li class="cl-effect-11"><a href="contact.html" data-hover="联系">联系</a></li>
-                        </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="首页">首页</a></li>
+                                <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="博客">博客</a></li>
+                                <li class="cl-effect-11"><a href="about.html" data-hover="关于">关于</a></li>
+                                <li class="cl-effect-11"><a href="contact.html" data-hover="联系">联系</a></li>
+                            </ul>
+                    <div id="input">
+                    <form role="search" method="get" id="searchform" action="{% url 'blog:search' %}">
+                        <input type="search" name="q" placeholder="搜索" id ='input' required>
+                        <button type="submit"><span class="ion-ios-search-strong"></span></button>
+                    </form>
+                    </div>
                     </div><!-- /.navbar-collapse -->
                 </nav>
-                <div id="header-search-box">
-                    <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
-                    <div id="search-form" class="search-form">
-                        <form role="search" method="get" id="searchform" action="#">
-                            <input type="search" placeholder="搜索" required>
-                            <button type="submit"><span class="ion-ios-search-strong"></span></button>
-                        </form>
-                    </div>
-                </div>
             </div><!-- col-md-8 -->
         </div>
+
     </header>
     {% if messages %}
     {% for message in messages %}

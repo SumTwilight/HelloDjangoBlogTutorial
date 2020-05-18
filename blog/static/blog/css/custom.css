@@ -104,7 +104,7 @@ img {
  */
 
 #site-header {
-    background-color: #FFF;
+    background-color:rgba(0,0,0,0);
     padding: 25px 20px;
     margin-bottom: 40px;
     border-bottom: 1px solid #e7e7e7;
@@ -214,7 +214,7 @@ img {
 }
 
 .post {
-    background: #fff;
+    background-color:rgba(0,0,0,0);
     padding: 30px 30px 0;
 }
 
@@ -336,7 +336,7 @@ img {
  */
 
 .widget {
-    background: #fff;
+    background-color:rgba(0,0,0,0);
     padding: 30px 0 0;
 }
 
@@ -346,6 +346,7 @@ img {
     line-height: 1.6;
     padding: 10px 0 0;
     font-weight: 400;
+    background-color:rgba(0,0,0,0);
 }
 
 .widget-recent-posts ul {

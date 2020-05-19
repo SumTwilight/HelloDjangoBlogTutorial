@@ -11,3 +11,10 @@ media/
 
 # github account
 _credentials.py
+
+# coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover

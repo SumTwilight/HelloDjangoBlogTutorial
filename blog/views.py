@@ -132,6 +132,7 @@ def tag(request, pk):
     post_list = Post.objects.filter(tags=t).order_by('-created_time')
     return render(request, 'blog/index.html', context={'post_list': post_list})
 
+
 # 添加查找功能
 def search(request):
     q = request.GET.get('q')
@@ -143,3 +144,9 @@ def search(request):
 
     post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
     return render(request, 'blog/index.html', {'post_list': post_list})
+
+
+# 关于页面
+def about(request):
+    print(123)
+    return render(request, 'blog/about.html')

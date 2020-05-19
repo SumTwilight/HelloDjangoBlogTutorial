@@ -84,7 +84,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="首页">首页</a></li>
                                 <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="博客">博客</a></li>
-                                <li class="cl-effect-11"><a href="about.html" data-hover="关于">关于</a></li>
+                                <li class="cl-effect-11"><a href="{% url 'blog:about' %}" data-hover="关于">关于</a></li>
                                 <li class="cl-effect-11"><a href="contact.html" data-hover="联系">联系</a></li>
                             </ul>
                     <div id="input">
@@ -109,8 +109,6 @@
     {% endfor %}
     {% endif %}
 </div>
-<div class="copyrights">Collect from <a href="https://www.cssmoban.com/">网页模板</a></div>
-<div class="copyrights">Modified by <a href="https://zmrenwu.com/">追梦人物的博客</a></div>
 
 <div class="content-body">
     <div class="container">
@@ -153,7 +151,7 @@
         <ul>
             <li><a href="{% url 'blog:index' %}">首页</a></li>
             <li><a href="{% url 'blog:index' %}">博客</a></li>
-            <li><a href="about.html">关于</a></li>
+            <li><a href="{% url 'blog:about' %}">关于</a></li>
             <li><a href="contact.html">联系</a></li>
         </ul>
     </nav>
